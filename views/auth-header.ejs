@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="js/index.js"></script>
+</head>
+<body>
+
+<div class="row banner ">
+  <div class="col-xs-1 no-padding padding">
+    <a href="#" class="balink">winterest</a>
+  </div>
+  <div class="col-xs-2 no-padding padding" id="your-winboard" style="text-align: left !important;width: 100px !important;">
+    <a href="/your-winboard" class="balink" >Your Winboard</a>
+  </div>
+  <div class="col-xs-2 no-padding padding" id="recent-wins" style="width: 120px !important;">
+    <a href="/recent-wins" class="balink" >Recent Wins</a>
+  </div>
+  <div class="col-xs-5">
+    
+  </div>
+  <div class="col-xs-2 no-padding padding" style="text-align: right !important;">
+ <% if (user.local.email) { %>
+      Hello <%= user.local.name%>
+         <% }else if(user.twitter.displayName){ %>
+      Hello <%= user.twitter.displayName%>
+         <% } %>
+  </div>
+  <div class="col-xs-1 no-padding padding" style="width: 40px !important;;text-align: right; !important;">
+    <i class="fa fa-gear fa-lg" ></i>
+  </div>
+  <div class="col-xs-1 no-padding padding" style="width: 90px !important;">
+    <a href="/logout" class="balink">Logout</a>
+  </div>
+</div>

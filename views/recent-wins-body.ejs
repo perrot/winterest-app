@@ -1,0 +1,41 @@
+
+<div style="text-align:center;width:95%;margin:auto">
+  
+  <h2 style="text-align:left;color:white;padding-left:20px">Recent Wins</h2><hr/>
+  <div class="row" style="margin-left:20px;padding-bottom:40px">
+  <div class="grid" id="board">
+
+<script>
+$(document).ready(function(){
+<% for(var i=0;i<allusers.length;i++){ %>
+
+	<% var board=[] %>
+	<% var user='' %>
+	<% if (allusers[i].local.email){ %>
+		<%board=allusers[i].local.board%>
+		<% if (allusers[i].local.name){ %>
+			<% user=allusers[i].local.name %>
+		<% }else{ %>
+			<% user=allusers[i].local.email %>
+		<%}%>
+	<% }else if (allusers[i].twitter.username){ %>
+		<%board=allusers[i].twitter.board%>
+		<% if (allusers[i].twitter.displayName){ %>
+			<% user=allusers[i].twitter.displayName %>
+		<% }else{ %>
+			<% user=allusers[i].twiiter.username %>
+		<%}%>
+	<%}%>
+	<% for(var j=0;j<board.length;j++){ %>
+		$.loadWin("<%= board[j].title %>","<%= board[j].source %>","<%= user %>");
+	<%}%>
+<%}%>
+});
+</script>
+  </div>
+</div>
+  
+</div>
+<script>
+$('#recent-wins').addClass('lightgray');
+</script>

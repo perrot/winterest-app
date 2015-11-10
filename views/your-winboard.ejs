@@ -1,0 +1,64 @@
+<%- include auth-header %>
+
+<div style="text-align:center ;width:95%;margin:auto;padding-bottom:40px">
+  
+  <h2 style="text-align:left;color:white;padding-left:20px">Your Winboard</h2>
+  <hr/>
+  <div class="row" style="margin-left:20px;">
+  <div class="grid" id="board">
+  <div class="grid-item grid-item--height2"><br/><button class="btn btn-primary" id="opener">Add a Win</button><br/><br/>add new win
+    </div>
+<script>
+$(document).ready(function(){
+	<% var board=[] %>
+	<% if (user.local.email){ %>
+		<%board=user.local.board%>
+	<% }else if (user.twitter.username){ %>
+		<%board=user.twitter.board%>
+	<%}%>
+	<% for(var j=0;j<board.length;j++){ %>
+		$.loadWin("<%= board[j].title %>","<%= board[j].source %>",'');
+	<%}%>
+});
+</script>
+  </div>
+    <div id="dialog" title="" style="background:white;width: 600px !important;left: 340px !important;" class="form-control">
+      <h3>Add a new win</h3>
+      <hr/>
+  <div class="form-control" style="height:140px"><img src=""  id="preview" style="width:100%;height:100%"/></div>
+      <h3>Title</h3>
+      <input type="text" class="form-control" id='image-title'/>
+      <h3>Source (http link)</h3>
+      <input type="text" class="form-control" id="source"/>
+      <h3>Type of Media</h3>
+      <div class="row">
+        <div class="col-xs-6">
+          Image
+      <input type="radio" class="form-control"></input>
+      </div>
+      <div class="col-xs-6">
+        Video (Comming Soon!)
+      <input type="radio" class="form-control"></input>
+      
+      </div>
+  </div>
+  <button class="btn btn-primary" id="add-win">OK</button>
+      <button class="btn btn-warning" onclick="$('#dialog').dialog('close')">Cancel</button>
+</div>
+<div id="delete-dialog" title="" style="background:white;" class="form-control">
+      <h3>Delete</h3>
+      <hr/>
+      <h4>Are you sure?</h4>
+      
+      <p>This action can not be undone.<br/>Click OK will permanently delete this win</p>
+      <hr/>
+  <button class="btn btn-primary" id="delete-win">OK</button>
+      <button class="btn btn-warning" onclick="$('#delete-dialog').dialog('close')">Cancel</button>
+</div>
+</div>
+  
+</div>
+<script>
+$('#your-winboard').addClass('lightgray');
+</script>
+<%- include footer %>
